@@ -13,12 +13,13 @@ const PORT = 5000; // Backend akan berjalan di port 5000
 app.use(cors());
 app.use(express.json());
 
-// 4. Konfigurasi Koneksi Database LOKAL (XAMPP)
+// Mengambil konfigurasi dari Environment Variables
 const dbConfig = {
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'db_fasilkom_unsri'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
+    port: process.env.DB_PORT || 3306 // Gunakan port dari env, atau default 3306
 };
 
 // 5. Rute API
